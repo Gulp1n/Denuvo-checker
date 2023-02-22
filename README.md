@@ -1,4 +1,4 @@
-# Horwarts-Legacy-Denuvo
+# Horwarts Legacy Denuvo
 
 a simple program I made in node.js to check if Hogwarts Legacy can be pirated
 
