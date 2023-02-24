@@ -1,8 +1,11 @@
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 import { HtmlReplace } from "./modules/replace.js";
-import fs from 'fs'
 import * as ReadLine from "readline/promises";
+import fs from 'fs'
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+const {gameName} = require('./value.json')
 
 let url = 'https://api.reddit.com/api/info/?id=t3_p9ak4n'
 
@@ -37,3 +40,13 @@ async function selector(){
 
 let select = await selector()
 console.log(`you selected ${pp2[select-1]}`)
+
+let jsondata = {
+    "gameName": pp2[select-1]
+}
+
+const jsondata2 = JSON.stringify(jsondata)
+
+fs.writeFile('./value.json', jsondata2, (err) => {
+    if (err) throw err
+})
